@@ -173,7 +173,7 @@ cython_debug/
 
 # End of https://www.toptal.com/developers/gitignore/api/django
 
-.code-workspace
+*.code-workspace
 **/migrations/**
 !**/migrations
 !**/migrations/__init__.py
