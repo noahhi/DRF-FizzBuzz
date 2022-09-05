@@ -18,7 +18,11 @@ def fizzbuzz(request):
 
     elif request.method == 'POST':
         data = request.data
-        data["useragent"] = request.META["HTTP_USER_AGENT"]
+
+        # if request includes a user agent, save it
+        if 'HTTP_USER_AGENT' in request.META:
+            data["useragent"] = request.META["HTTP_USER_AGENT"]
+
         serializer = FizzBuzzSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
