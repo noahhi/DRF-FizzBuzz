@@ -14,7 +14,8 @@ class FizzBuzzTests(APITestCase):
         """
         factory = APIRequestFactory()
         request = factory.post('/fizzbuzz/', {'message' : self.TEST_MESSAGE})
-        response = views.fizzbuzz(request)
+        view = views.FizzBuzzList.as_view()
+        response = view(request)
 
         # check that we got the appropriate success status code
         self.assertEqual(response.status_code, status.HTTP_201_CREATED) 
@@ -29,7 +30,8 @@ class FizzBuzzTests(APITestCase):
         """
         factory = APIRequestFactory()
         request = factory.post('/fizzbuzz/')
-        response = views.fizzbuzz(request)
+        view = views.FizzBuzzList.as_view()
+        response = view(request)
 
         # check that we got the appropriate bad request status code
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST) 
@@ -47,7 +49,8 @@ class FizzBuzzTests(APITestCase):
 
         factory = APIRequestFactory()
         request = factory.get('/fizzbuzz/1')
-        response = views.fizzbuzz_detail(request, id=1)
+        view = views.FizzBuzzDetail.as_view()
+        response = view(request, id=1)
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
