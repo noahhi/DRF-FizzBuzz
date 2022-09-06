@@ -3,7 +3,7 @@
 
 ### Setup: 
 Clone the repo and then run the following from the project directory
-```
+```python
 python manage.py migrate # init the database
 python manage.py runserver
 ```
